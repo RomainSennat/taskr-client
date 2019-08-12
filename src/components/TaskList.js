@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, List } from 'semantic-ui-react';
+import { List } from 'semantic-ui-react';
 import { TASKS_UPDATE } from '../redux/actions/tasks';
+import TaskItem from './TaskItem';
 
 const _ = require('lodash');
 
@@ -30,17 +31,7 @@ class TaskList extends React.PureComponent {
     }
     
     renderTasks() {
-        return this.state.tasks.map(el => (
-            <List.Item key={el._id.$oid}>
-                <List.Content floated='right'>
-                    <Button icon="trash" onClick={this._handle_delete.bind(this, el)}/>
-                </List.Content>
-                <List.Content>
-                    <List.Header>{el.name}</List.Header>
-                    <List.Description>{new Date(el.expire_at.$date.$numberLong).toLocaleDateString()}&nbsp;:&nbsp;{el.description}</List.Description>
-                </List.Content>
-            </List.Item>
-        ));
+        return this.state.tasks.map(el => <TaskItem key={el._id.$oid} task={el} onDelete={this._handle_delete.bind(this, el)} />);
     }
     
     render() {
