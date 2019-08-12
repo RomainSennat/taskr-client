@@ -2,3 +2,7 @@
     padding-top: 100px !important;
     padding-bottom: 25px !important;
 }
+
+.ui.secondary.menu {
+    background: #ffffff !important;
+}
