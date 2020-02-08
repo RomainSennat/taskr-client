@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import TaskList from '../components/TaskList';
-import AddForm from './TaskAddForm';
+
+// Lazy loading
+const TaskList = lazy(() => import('./TaskList'));
+const AddForm = lazy(() => import('./TaskAddForm'));
 
 export default class Router extends React.Component {
     

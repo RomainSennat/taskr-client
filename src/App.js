@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import { Container, Header } from 'semantic-ui-react';
@@ -17,8 +17,10 @@ export default class App extends React.PureComponent {
             <Container className='layout'>
                 <Header as='h1' textAlign='center'>TaskR</Header>
                 <BrowserRouter>
-                    <MenuLayout />
-                    <Router />
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <MenuLayout />
+                        <Router />
+                    </Suspense>
                 </BrowserRouter>
             </Container>
         );
