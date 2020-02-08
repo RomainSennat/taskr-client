@@ -89,7 +89,9 @@ class TaskAddForm extends React.PureComponent {
             expire_at: yup.date().min(new Date(), 'La date d\'expiration ne peut pas être antérieur à la date du jour.')
         });
         return (
-            <Formik initialValues={inital} validationSchema={schema} onSubmit={this._handle_submit} render={props => this.renderForm(props)} />
+            <Formik initialValues={inital} validationSchema={schema} onSubmit={this._handle_submit}>
+                {props => this.renderForm(props)}
+            </Formik>
         );
     }
     
